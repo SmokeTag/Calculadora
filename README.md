@@ -1,13 +1,13 @@
 # PyQt5 Calculator Project
 
 ## Overview
-This project is a graphical calculator application developed in Python using the **PyQt5** library. It supports two modes: **Normal** and **Scientific**, allowing users to perform basic and advanced mathematical operations. The project is designed with **Object-Oriented Programming (OOP)** principles, separating the user interface from the logic for better maintainability and scalability.
+This project is a calculator application developed in Python using the **PyQt5** library. It supports two modes: **Normal** and **Scientific**, allowing users to perform basic and advanced mathematical operations. The project is designed with **Object-Oriented Programming (OOP)** principles, separating the user interface from the logic for better maintainability and scalability.
 
 ## Features
 - **Mode Selection**: Switch between Normal and Scientific modes via a menu without opening a new window.
 - **Normal Mode**:
   - Numeric buttons (0-9), decimal point, and basic operations (+, -, *, /).
-  - "=" button to evaluate expressions and "Clear" button to reset.
+  - "=" button to evaluate expressions and "Clear" button to reset and "<-" button to delete the last character.
   - Display area for expressions and results.
 - **Scientific Mode**:
   - All Normal mode features.
@@ -26,14 +26,15 @@ The project is organized into the following files:
 - `menu_selector.py`: Manages the mode selection menu and interface switching.
 
 ## Requirements
-- Python 3.x
+- Python 3.11
 - PyQt5 (`pip install pyqt5`)
+- Numpy (`pip install numpy`)
 
 ## Setup and Installation
 1. Clone or download the project repository.
 2. Install the required dependencies:
    ```bash
-   pip install pyqt5
+   pip install pyqt5, numpy
    ```
 3. Run the application:
    ```bash
