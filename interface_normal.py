@@ -23,46 +23,19 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.central_widget)
         self.layout = QGridLayout(self.central_widget)
         
-        # Create buttons for number pad
-        self.number_0 = QPushButton("0")
-        self.number_1 = QPushButton("1")
-        self.number_2 = QPushButton("2")
-        self.number_3 = QPushButton("3")
-        self.number_4 = QPushButton("4")
-        self.number_5 = QPushButton("5")
-        self.number_6 = QPushButton("6")
-        self.number_7 = QPushButton("7")
-        self.number_8 = QPushButton("8")
-        self.number_9 = QPushButton("9")
-        self.decimal_button   = QPushButton(".")
-        self.add_button       = QPushButton("+")
-        self.subtract_button  = QPushButton("-")
-        self.multiply_button  = QPushButton("*")
-        self.divide_button    = QPushButton("/")
-        self.backspace_button = QPushButton("<-")
-        self.clear_button     = QPushButton("Clear")
-        self.equals_button    = QPushButton("=")
-        
-        self.layout.addWidget(self.number_0, 4, 0)
-        self.layout.addWidget(self.number_1, 3, 0)
-        self.layout.addWidget(self.number_2, 3, 1)
-        self.layout.addWidget(self.number_3, 3, 2)
-        self.layout.addWidget(self.number_4, 2, 0)
-        self.layout.addWidget(self.number_5, 2, 1)
-        self.layout.addWidget(self.number_6, 2, 2)
-        self.layout.addWidget(self.number_7, 1, 0)
-        self.layout.addWidget(self.number_8, 1, 1)
-        self.layout.addWidget(self.number_9, 1, 2)
-        self.layout.addWidget(self.decimal_button, 4, 1)
-        self.layout.addWidget(self.add_button, 3, 3, 2, 1)
-        self.layout.addWidget(self.subtract_button, 2, 3)
-        self.layout.addWidget(self.multiply_button, 1, 3)
-        self.layout.addWidget(self.divide_button, 0, 2)
-        self.layout.addWidget(self.backspace_button, 0, 3)
-        self.layout.addWidget(self.clear_button, 0, 0, 1, 2)        
-        
-        self.layout.addWidget(self.equals_button, 4, 2)
-        
+        buttons = [
+        ("0", 4, 0, 1, 1), ("1", 3, 0, 1, 1), ("2", 3, 1, 1, 1), ("3", 3, 2, 1, 1),
+        ("4", 2, 0, 1, 1), ("5", 2, 1, 1, 1), ("6", 2, 2, 1, 1),
+        ("7", 1, 0, 1, 1), ("8", 1, 1, 1, 1), ("9", 1, 2, 1, 1),
+        (".", 4, 1, 1, 1), ("+", 3, 3, 2, 1), ("-", 2, 3, 1, 1),
+        ("*", 1, 3, 1, 1), ("/", 0, 2, 1, 1), ("<-", 0, 3, 1, 1),
+        ("Clear", 0, 0, 1, 2), ("=", 4, 2, 1, 1)
+    ]
+        self.button_map = {}  # Store buttons for later connections
+        for text, row, col, rowspan, colspan in buttons:
+            btn = QPushButton(text)
+            self.layout.addWidget(btn, row, col, rowspan, colspan)
+            self.button_map[text] = btn
         
         self.setStyleSheet("""
             QPushButton {
