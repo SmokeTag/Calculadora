@@ -1,13 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QWidget, QGridLayout, QLineEdit, QSizePolicy
-from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QGridLayout, QLineEdit, QSizePolicy
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-
-hyundai_blue =       (0,    44,  95) #002c5f
-progressive_blue =   (0,   170, 210) #00aad2
-hyundai_sand =       (228, 220, 211) #e4dcd3
-hyundai_light_sand = (246, 243, 242) #f6f3f2
-white =              (255, 255, 255) #ffffff
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -32,7 +26,6 @@ class MainWindow(QMainWindow):
         self.display.setReadOnly(True)
         self.display.setAlignment(Qt.AlignRight)
         self.layout.addWidget(self.display, 0, 0, 2, 4, Qt.AlignBottom)
-        # self.layout.addWidget(self.display, 0, 0, 1, 4)
         
         buttons = [
         ("0", 6, 0, 1, 1), ("1", 5, 0, 1, 1), ("2", 5, 1, 1, 1), ("3", 5, 2, 1, 1),
