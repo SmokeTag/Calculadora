@@ -20,7 +20,7 @@ class NormalCalculatorWidget(QWidget):
         ("4", 4, 0, 1, 1), ("5", 4, 1, 1, 1), ("6", 4, 2, 1, 1),
         ("7", 3, 0, 1, 1), ("8", 3, 1, 1, 1), ("9", 3, 2, 1, 1),
         (".", 6, 1, 1, 1), ("+", 5, 3, 2, 1), ("-", 4, 3, 1, 1),
-        ("*", 3, 3, 1, 1), ("/", 2, 2, 1, 1), ("<-", 2, 3, 1, 1),
+        ("*", 3, 3, 1, 1), ("/", 2, 2, 1, 1), ("<--", 2, 3, 1, 1),
         ("Clear", 2, 0, 1, 2), ("=", 6, 2, 1, 1)
     ]
         self.button_map = {}
@@ -28,30 +28,8 @@ class NormalCalculatorWidget(QWidget):
             btn = QPushButton(text)
             self.layout.addWidget(btn, row, col, rowspan, colspan)
             self.button_map[text] = btn
-        self.button_map["+"].setObjectName("add")
         self.button_map["+"].setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         
 
-        self.setStyleSheet("""
-            QLineEdit {
-                font-size: 24px;
-                padding: 10px;
-                border: 1px solid #e4dcd3;
-            }
-            QPushButton {
-                font-size: 20px;
-                font-family: 'Calibri';
-                background-color: #f6f3f2;
-                border: 1px solid #e4dcd3;
-                padding: 10px 12px;
-                border-radius: 7px;
-            }
-            QPushButton:hover {
-                background-color: #e4dcd3;
-            }
-            QPushButton:pressed {
-                background-color: #00aad2;
-            }
-        """)
 
     
