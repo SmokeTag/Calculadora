@@ -3,11 +3,12 @@ from PyQt5.QtCore import Qt
 from calculator_logic import CalculatorLogic
 
 class NormalCalculatorWidget(QWidget):
-    def __init__(self):
+    def __init__(self, connect_buttons=True):
         super().__init__()
         self.logic = CalculatorLogic()
         self.init_ui()
-        self.connect_buttons()
+        if connect_buttons:
+            self.connect_buttons()
         
     def init_ui(self):
         # Set up the layout
@@ -61,9 +62,12 @@ class NormalCalculatorWidget(QWidget):
         if current_text:
             self.display.setText(current_text[:-1])
 
-    def append_to_display(self, text):
+    def append_to_display(self, text, end=True):
         current_text = self.display.text()
-        new_text = current_text + text
+        if end:
+            new_text = current_text + text
+        else:
+            new_text = text + current_text
         self.display.setText(new_text)
 
 
