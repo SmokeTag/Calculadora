@@ -35,6 +35,8 @@ class NormalCalculatorWidget(QWidget):
 
     def connect_buttons(self):
         for text, button in self.button_map.items():
+            if button.receivers(button.clicked) > 0:
+                continue
             if text == "=":
                 button.clicked.connect(self.calculate_result)
             elif text == "Clear":
