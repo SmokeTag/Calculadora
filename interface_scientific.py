@@ -5,8 +5,8 @@ from PyQt5.QtCore import Qt
 from interface_normal import NormalCalculatorWidget
 
 class ScientificCalculatorWidget(NormalCalculatorWidget):
-    def __init__(self):
-        super().__init__(connect_buttons = False)
+    def __init__(self, logic):
+        super().__init__(logic, connect_buttons=False)
         self.adjust_display()
         self.remove_buttons()
         self.add_scientific_buttons()

@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QStackedWidget, QVBoxLayout, QWidget
 from PyQt5.QtGui import QIcon
+from calculator_logic import CalculatorLogic
 from interface_normal import NormalCalculatorWidget
 from interface_scientific import ScientificCalculatorWidget
 from menu_selector import ModeSelector
@@ -8,6 +9,7 @@ from menu_selector import ModeSelector
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.logic = CalculatorLogic()
         self.init_ui()
         
     def init_ui(self):
@@ -25,6 +27,8 @@ class MainWindow(QMainWindow):
         
         # Stacked widget for calculators
         self.stack = QStackedWidget()
+        self.normal_calc = NormalCalculatorWidget(self.logic)
+        self.scientific_calc = ScientificCalculatorWidget(self.logic)
         self.normal_calc = NormalCalculatorWidget()
         self.scientific_calc = ScientificCalculatorWidget()
         self.stack.addWidget(self.normal_calc)

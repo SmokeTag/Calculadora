@@ -3,9 +3,9 @@ from PyQt5.QtCore import Qt
 from calculator_logic import CalculatorLogic
 
 class NormalCalculatorWidget(QWidget):
-    def __init__(self, connect_buttons=True):
+    def __init__(self, logic: CalculatorLogic, connect_buttons: bool = True):
         super().__init__()
-        self.logic = CalculatorLogic()
+        self.logic = logic
         self.init_ui()
         if connect_buttons:
             self.connect_buttons()
