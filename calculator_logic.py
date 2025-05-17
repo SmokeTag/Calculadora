@@ -1,4 +1,4 @@
-import numexpr as ne
+import math
 
 class CalculatorLogic:
     def __init__(self):
@@ -10,19 +10,31 @@ class CalculatorLogic:
         
     def process_expression(self):
         # self.expression = self.expression.replace("√", "sqrt(")
-        # self.expression = self.expression.replace("²", "**2")
+        self.expression = self.expression.replace("²", "**2")
+        if self.expression.endswith("%"):
+            self.expression = self.expression[:-1] + "/100"
         self.expression = self.expression.replace("%", "/100*")
-        if self.expression.endswith("*"):
-            self.expression = self.expression[:-1]
-        if self.expression.count("(") > self.expression.count(")"):
-            self.expression += ")"
+        unclosed_parentheses = self.expression.count("(") - self.expression.count(")")
+        if unclosed_parentheses > 0:
+            self.expression += ")" * unclosed_parentheses
 
     def calculate_result(self, expression):
+        """Evaluate the expression safely."""
         self.expression = expression
         self.process_expression()
         self.result = ""
         try:
-            self.result = str(ne.evaluate(self.expression))
+            allowed_globals = {
+                "math": math,
+                "sin": lambda x: math.sin(math.radians(x)),
+                "cos": lambda x: math.cos(math.radians(x)),
+                "tan": lambda x: math.tan(math.radians(x)),
+                "sqrt": math.sqrt
+            }
+            # Evaluate the expression using eval with restricted globals
+            # Note: eval is used here, but we restrict the namespace to math functions
+            result = eval(self.expression, {"__builtins__": {}}, allowed_globals)
+            self.result = str(round(result, 8))
         except Exception as e:
             self.result = "Error"
             print(f"Error evaluating expression: {e}")
