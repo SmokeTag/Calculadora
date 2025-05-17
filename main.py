@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 from calculator_logic import CalculatorLogic
 from interface_normal import NormalCalculatorWidget
 from interface_scientific import ScientificCalculatorWidget
+from interface_history import HistoryCalculatorWidget
 from menu_selector import ModeSelector
 
 class MainWindow(QMainWindow):
@@ -29,12 +30,12 @@ class MainWindow(QMainWindow):
         self.stack = QStackedWidget()
         self.normal_calc = NormalCalculatorWidget(self.logic)
         self.scientific_calc = ScientificCalculatorWidget(self.logic)
-        self.normal_calc = NormalCalculatorWidget()
-        self.scientific_calc = ScientificCalculatorWidget()
+        self.history = HistoryCalculatorWidget(self.logic)
         self.stack.addWidget(self.normal_calc)
         self.stack.addWidget(self.scientific_calc)
-        
-        self.mode_selector = ModeSelector(self.stack, self.normal_calc, self.scientific_calc)
+        self.stack.addWidget(self.history)
+
+        self.mode_selector = ModeSelector(self.stack, self.normal_calc, self.scientific_calc, self.history)
         main_layout.addWidget(self.mode_selector)
         main_layout.addWidget(self.stack)
         
