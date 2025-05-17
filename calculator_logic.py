@@ -9,15 +9,12 @@ class CalculatorLogic:
     def add_to_history(self):
         if self.expression and self.result:
             self.history.append((self.expression, self.result))
-            if len(self.history) > 10:
-                self.history.pop(0)
         else:
             print("No expression or result to add to history.")
     
-    def clear_expression(self):
-        self.expression = ""
-        self.result = ""
-        
+    def clear_history(self):
+        self.history.clear()
+
     def process_expression(self):
         # self.expression = self.expression.replace("√", "sqrt(")
         self.expression = self.expression.replace("²", "**2")
@@ -48,5 +45,4 @@ class CalculatorLogic:
             self.result = "Error"
             print(f"Error evaluating expression: {e}")
         self.add_to_history()
-        self.clear_expression()
         return self.result
