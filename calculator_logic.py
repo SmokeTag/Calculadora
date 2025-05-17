@@ -2,11 +2,21 @@ import math
 
 class CalculatorLogic:
     def __init__(self):
-        self.expression = ""
-        self.result = ""
+        self.expression: str = ""
+        self.result: str = ""
+        self.history: list[tuple[str, str]] = []
 
+    def add_to_history(self):
+        if self.expression and self.result:
+            self.history.append((self.expression, self.result))
+            if len(self.history) > 10:
+                self.history.pop(0)
+        else:
+            print("No expression or result to add to history.")
+    
     def clear_expression(self):
         self.expression = ""
+        self.result = ""
         
     def process_expression(self):
         # self.expression = self.expression.replace("√", "sqrt(")
@@ -22,7 +32,6 @@ class CalculatorLogic:
         """Evaluate the expression safely."""
         self.expression = expression
         self.process_expression()
-        self.result = ""
         try:
             allowed_globals = {
                 "math": math,
@@ -38,4 +47,6 @@ class CalculatorLogic:
         except Exception as e:
             self.result = "Error"
             print(f"Error evaluating expression: {e}")
+        self.add_to_history()
+        self.clear_expression()
         return self.result
