@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton
+from PyQt5.QtGui import QIcon
 
 class ModeSelector(QWidget):
     def __init__(self, stack_widget, normal_widget, scientific_widget, history_widget):
@@ -13,7 +14,9 @@ class ModeSelector(QWidget):
         layout = QHBoxLayout(self)
         self.normal_btn = QPushButton("Normal")
         self.scientific_btn = QPushButton("Scientific")
-        self.history_btn = QPushButton("History")
+        self.history_btn = QPushButton()
+        self.history_btn.setIcon(QIcon("History_icon.png"))
+        self.history_btn.setFixedWidth(50)
         layout.addWidget(self.normal_btn)
         layout.addWidget(self.scientific_btn)
         layout.addWidget(self.history_btn)
