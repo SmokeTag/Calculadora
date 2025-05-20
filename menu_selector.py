@@ -39,6 +39,7 @@ class ModeSelector(QWidget):
     
     def show_history(self):
         self.stack_widget.setCurrentWidget(self.history_widget)
+        self.history_widget.update_history()
         self.normal_btn.setEnabled(True)
         self.scientific_btn.setEnabled(True)
         self.history_btn.setEnabled(False)
