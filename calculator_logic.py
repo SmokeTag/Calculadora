@@ -46,3 +46,29 @@ class CalculatorLogic:
             print(f"Error evaluating expression: {e}")
         self.add_to_history()
         return self.result
+
+    def toggle_sign(self, text):
+        print(f'text: {text}, len(text): {len(text)}')
+        number_flag = False
+        text = " " + text
+        for index in range(len(text)-1, -1, -1):
+            print(f'index: {index}')
+            print(f'index: {index}, text[index]: {text[index]}')
+            print(f'number_flag: {number_flag}')
+            print(f'text[index].isdigit(): {text[index].isdigit()}')
+            if text[index] == ")":
+                continue
+            if not text[index].isdigit():
+                break
+            number_flag = True
+
+        if number_flag:
+            if text[index] == "-":
+                text = text[:index] + "+" + text[index + 1:]
+            elif text[index] == "+":
+                text = text[:index] + "-" + text[index + 1:]
+            elif text[index] == " ":
+                text = text[:index+1] + "-" + text[index+1:]
+            else:
+                text = text[:index+1] + "(-" + text[index+1:] + ")"
+        return text[1:]
