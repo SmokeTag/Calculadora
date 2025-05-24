@@ -48,14 +48,9 @@ class CalculatorLogic:
         return self.result
 
     def toggle_sign(self, text):
-        print(f'text: {text}, len(text): {len(text)}')
         number_flag = False
         text = " " + text
         for index in range(len(text)-1, -1, -1):
-            print(f'index: {index}')
-            print(f'index: {index}, text[index]: {text[index]}')
-            print(f'number_flag: {number_flag}')
-            print(f'text[index].isdigit(): {text[index].isdigit()}')
             if text[index] == ")":
                 continue
             if not text[index].isdigit():
