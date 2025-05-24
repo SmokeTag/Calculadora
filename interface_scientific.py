@@ -1,5 +1,3 @@
-#TODO: compreender o comportamento adequado de ± para correta implementação
-
 from PyQt5.QtWidgets import QWidget, QGridLayout, QLineEdit, QPushButton, QSizePolicy
 from PyQt5.QtCore import Qt
 from interface_normal import NormalCalculatorWidget
@@ -44,6 +42,10 @@ class ScientificCalculatorWidget(NormalCalculatorWidget):
         self.button_map["x²"].clicked.connect(lambda: self.append_to_display("²"))
         self.button_map["π"].clicked.connect(lambda: self.append_to_display("3.1415926536"))
         self.button_map["1/x"].clicked.connect(lambda: self.append_to_display("1/", end=False))
-        self.button_map["±"].clicked.connect(lambda: self.append_to_display("(-1)*", end=False))
+        self.button_map["±"].clicked.connect(self.toggle_sign)
         super().connect_buttons()
-        
+    
+    def toggle_sign(self):
+        current_text = self.display.text()
+        new_text = self.logic.toggle_sign(current_text)
+        self.display.setText(new_text)
