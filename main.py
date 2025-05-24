@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
         
         # Apply stylesheet to all child widgets
         self.setStyleSheet("""
-            QLineEdit {
+            QLineEdit, QTextEdit {
                 font-size: 24px;
                 padding: 10px;
                 border: 1px solid #e4dcd3;
