@@ -67,7 +67,7 @@ class CalculatorLogic:
                 text = text[:index] + "+" + text[index + 1:]
             elif text[index] == "+":
                 text = text[:index] + "-" + text[index + 1:]
-            elif text[index] == " ":
+            elif text[index] == " " or text[index] == "(":
                 text = text[:index+1] + "-" + text[index+1:]
             else:
                 text = text[:index+1] + "(-" + text[index+1:] + ")"
