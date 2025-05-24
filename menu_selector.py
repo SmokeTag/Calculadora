@@ -27,12 +27,14 @@ class ModeSelector(QWidget):
 
     def show_normal(self):
         self.stack_widget.setCurrentWidget(self.normal_widget)
+        self.normal_widget.display.setText(self.scientific_widget.display.text())
         self.normal_btn.setEnabled(False)
         self.scientific_btn.setEnabled(True)
         self.history_btn.setEnabled(True)
 
     def show_scientific(self):
         self.stack_widget.setCurrentWidget(self.scientific_widget)
+        self.scientific_widget.display.setText(self.normal_widget.display.text())
         self.normal_btn.setEnabled(True)
         self.scientific_btn.setEnabled(False)
         self.history_btn.setEnabled(True)
